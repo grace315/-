@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>長卷軸網頁導覽</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+    }
+
+    /* 導覽列樣式 */
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: #333;
+      color: #fff;
+      padding: 10px 20px;
+      z-index: 999;
+    }
+
+    .navbar a {
+      color: white;
+      margin-right: 20px;
+      text-decoration: none;
+    }
+
+    /* 內容區域模擬長卷軸 */
+    .content {
+      padding-top: 60px; /* 為了不被 fixed 導覽列遮住 */
+      height: 3000px;
+      background: linear-gradient(white, #f0f0f0);
+    }
+
+    #middle {
+      margin-top: 1500px; /* 大約在一半位置 */
+      padding: 20px;
+      background: #ccc;
+    }
+
+    /* 回到頂部按鈕 */
+    #backToTop {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background-color: #007bff;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      display: none;
+      z-index: 999;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="navbar">
+    <a href="#middle">跳至中段</a>
+  </div>
+
+  <div class="content">
+    <div id="middle">
+      <h2>這是網頁的中段（約 50%）</h2>
+      <p>你已經來到長卷軸網頁的中間位置。</p>
+    </div>
+  </div>
+
+  <button id="backToTop">回到頂部 ↑</button>
+
+  <script>
+    const backToTopBtn = document.getElementById('backToTop');
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTopBtn.style.display = 'block';
+      } else {
+        backToTopBtn.style.display = 'none';
+      }
+    });
+
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  </script>
+
+</body>
+</html>
